@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CadastroClientes.Application/CadastroClientes.Application.csproj" Id="4f790d68-aaa8-4732-8ede-9b9f4aed4787" />
+  <Project Path="CadastroClientes.Domain/CadastroClientes.Domain.csproj" />
+  <Project Path="CadastroClientes.Infrastructure/CadastroClientes.Infrastructure.csproj" Id="88858791-e4e5-4bed-815d-50cabda25b4a" />
+  <Project Path="CadastroClientes.UI/CadastroClientes.UI.csproj" Id="4ddb7baa-e6a6-4cba-973d-86069f48096c" />
+</Solution>
