@@ -38,6 +38,8 @@
             txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
             btnEntrar = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblMensagem = new Label();
+            lblCadastrar = new LinkLabel();
             SuspendLayout();
             // 
             // txtEmail
@@ -95,7 +97,7 @@
             btnEntrar.Location = new Point(79, 337);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnEntrar.Size = new Size(225, 56);
+            btnEntrar.Size = new Size(230, 56);
             btnEntrar.TabIndex = 2;
             btnEntrar.Text = "Entrar";
             // 
@@ -110,18 +112,41 @@
             guna2HtmlLabel1.TabIndex = 3;
             guna2HtmlLabel1.Text = "ꗃ Login";
             // 
-            // Form1
+            // lblMensagem
+            // 
+            lblMensagem.AutoSize = true;
+            lblMensagem.Location = new Point(79, 407);
+            lblMensagem.Name = "lblMensagem";
+            lblMensagem.Size = new Size(0, 20);
+            lblMensagem.TabIndex = 4;
+            // 
+            // lblCadastrar
+            // 
+            lblCadastrar.AutoSize = true;
+            lblCadastrar.LinkColor = Color.DodgerBlue;
+            lblCadastrar.Location = new Point(79, 396);
+            lblCadastrar.Name = "lblCadastrar";
+            lblCadastrar.Size = new Size(230, 20);
+            lblCadastrar.TabIndex = 5;
+            lblCadastrar.TabStop = true;
+            lblCadastrar.Text = "Não tem uma conta? Cadastre-se";
+            lblCadastrar.LinkClicked += lblCadastrar_LinkClicked;
+            // 
+            // frmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(370, 450);
+            Controls.Add(lblCadastrar);
+            Controls.Add(lblMensagem);
             Controls.Add(guna2HtmlLabel1);
             Controls.Add(btnEntrar);
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form1";
+            Name = "frmLogin";
             Text = "Form1";
+            Load += frmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -132,5 +157,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
         private Guna.UI2.WinForms.Guna2Button btnEntrar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Label lblMensagem;
+        private LinkLabel lblCadastrar;
     }
 }
