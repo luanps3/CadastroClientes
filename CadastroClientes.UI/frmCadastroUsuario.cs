@@ -27,7 +27,7 @@ public partial class frmCadastroUsuario : Form
             MostrarErro("O campo Nome é obrigatório.");
         }
 
-        if (string.IsNullOrWhiteSpace(txtLogin.Text))
+        if (string.IsNullOrWhiteSpace(txtEmail.Text))
         {
             MostrarErro("O campo Login é obrigatório.");
         }
@@ -53,13 +53,13 @@ public partial class frmCadastroUsuario : Form
         {
             var (sucesso, mensagem) = await _autenticacaoService.RegistrarUsuarioAsync(
                 txtNome.Text.Trim(),
-                txtLogin.Text.Trim(),
+                txtEmail.Text.Trim(),
                 txtSenha.Text
                 );
 
             if (sucesso)
             {
-                LoginCadastrado = txtLogin.Text.ToLower().Trim();
+                LoginCadastrado = txtEmail.Text.ToLower().Trim();
 
                 MessageBox.Show(
                     $"Usuário: '{LoginCadastrado}' cadastrado com sucesso!\n\nAgora faça login com suas credenciais.",
@@ -97,6 +97,11 @@ public partial class frmCadastroUsuario : Form
     }
 
     private void btnCancelar_Click(object sender, EventArgs e)
+    {
+        Close();
+    }
+
+    private void btnFechar_Click(object sender, EventArgs e)
     {
         Close();
     }

@@ -31,6 +31,12 @@ internal static class Program
 
         var FrmLogin = ServiceProvider!.GetRequiredService<frmLogin>();
         System.Windows.Forms.Application.Run(FrmLogin);
+
+        if (FrmLogin.LoginBemSucedido)
+        {
+            var FrmPrincipal = ServiceProvider!.GetRequiredService<frmPrincipal>();
+            System.Windows.Forms.Application.Run(FrmPrincipal);
+        }
     }
 
     static void ConfigurarServicos()

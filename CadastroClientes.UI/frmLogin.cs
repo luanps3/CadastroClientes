@@ -26,7 +26,7 @@ namespace CadastroClientes.UI
             txtEmail.Focus();
         }
 
-        private async Task btnEntrar_Click(object sender, EventArgs e)
+        private async void btnEntrar_Click(object sender, EventArgs e)
         {
             btnEntrar.Enabled = false;
             lblMensagem.Text = "Autenticando...";
@@ -76,7 +76,25 @@ namespace CadastroClientes.UI
 
         private void lblCadastrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            using var FrmCadastro = new frmCadastroUsuario(_autenticacaoService);
 
+            if (FrmCadastro.ShowDialog(this) == DialogResult.OK)
+            {
+                txtEmail.Text = FrmCadastro.LoginCadastrado;
+                txtSenha.Clear();
+                txtSenha.Focus();
+
+                lblMensagem.ForeColor = Color.FromArgb(39, 174, 96);
+                lblMensagem.Text = "Cadastro realizado! Faça seu login para continuar.";
+            }
+
+        }
+
+     
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
