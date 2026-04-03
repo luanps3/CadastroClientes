@@ -165,6 +165,7 @@
             btnNovo.Size = new Size(107, 40);
             btnNovo.TabIndex = 3;
             btnNovo.Text = "Novo";
+            btnNovo.Click += btnNovo_Click;
             // 
             // btnEditar
             // 
