@@ -49,7 +49,7 @@
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            btnCadastrar = new Guna.UI2.WinForms.Guna2Button();
+            btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             groupBox1.SuspendLayout();
             guna2Panel1.SuspendLayout();
@@ -181,6 +181,7 @@
             btnFechar.Size = new Size(30, 32);
             btnFechar.TabIndex = 7;
             btnFechar.Text = "X";
+            btnFechar.Click += btnFechar_Click;
             // 
             // guna2HtmlLabel1
             // 
@@ -193,23 +194,24 @@
             guna2HtmlLabel1.TabIndex = 0;
             guna2HtmlLabel1.Text = "Cadastro de Cliente";
             // 
-            // btnCadastrar
+            // btnSalvar
             // 
-            btnCadastrar.BorderRadius = 5;
-            btnCadastrar.CustomizableEdges = customizableEdges10;
-            btnCadastrar.DisabledState.BorderColor = Color.DarkGray;
-            btnCadastrar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnCadastrar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnCadastrar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnCadastrar.FillColor = Color.Green;
-            btnCadastrar.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold);
-            btnCadastrar.ForeColor = Color.White;
-            btnCadastrar.Location = new Point(32, 272);
-            btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            btnCadastrar.Size = new Size(99, 37);
-            btnCadastrar.TabIndex = 4;
-            btnCadastrar.Text = "Cadastrar";
+            btnSalvar.BorderRadius = 5;
+            btnSalvar.CustomizableEdges = customizableEdges10;
+            btnSalvar.DisabledState.BorderColor = Color.DarkGray;
+            btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnSalvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSalvar.FillColor = Color.Green;
+            btnSalvar.Font = new Font("Century Gothic", 7.8F, FontStyle.Bold);
+            btnSalvar.ForeColor = Color.White;
+            btnSalvar.Location = new Point(32, 272);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            btnSalvar.Size = new Size(99, 37);
+            btnSalvar.TabIndex = 4;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
@@ -228,6 +230,7 @@
             btnCancelar.Size = new Size(99, 37);
             btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // frmCliente
             // 
@@ -236,11 +239,12 @@
             ClientSize = new Size(310, 340);
             Controls.Add(groupBox1);
             Controls.Add(guna2Panel1);
-            Controls.Add(btnCadastrar);
+            Controls.Add(btnSalvar);
             Controls.Add(btnCancelar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmCliente";
             Text = "frmCliente";
+            Load += frmCliente_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             guna2Panel1.ResumeLayout(false);
@@ -258,7 +262,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2Button btnCadastrar;
+        private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
     }
 }

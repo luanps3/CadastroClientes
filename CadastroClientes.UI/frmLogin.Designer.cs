@@ -87,6 +87,7 @@
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtSenha.Size = new Size(286, 60);
             txtSenha.TabIndex = 1;
+            txtSenha.UseSystemPasswordChar = true;
             // 
             // btnEntrar
             // 

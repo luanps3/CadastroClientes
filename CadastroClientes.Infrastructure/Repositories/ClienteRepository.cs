@@ -18,9 +18,9 @@ namespace CadastroClientes.Infrastructure.Repositories
         public async Task<Cliente> AdicionarAsync(Cliente cliente)
         {
             const string sql =
-                @"INSERT INTO Cliente (Nome, Email, Telefone, DataCadastro, Ativo) 
+                @"INSERT INTO Clientes (Nome, Email, Telefone, DataCadastro, Ativo) 
                 VALUES (@Nome, @Email, @Telefone, @DataCadastro, @Ativo); 
-                SELECT SCOPE_IDENETITY()";
+                SELECT SCOPE_IDENTITY()";
 
             using var connection = new SqlConnection(_connectionString);
             using var command = new SqlCommand(sql, connection);

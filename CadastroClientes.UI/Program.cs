@@ -51,7 +51,7 @@ internal static class Program
 
         services.AddTransient<frmLogin>();
         services.AddTransient<frmPrincipal>();
-        //services.AddTransient<frmCliente>();
+        services.AddTransient<frmCliente>();
 
         ServiceProvider = services.BuildServiceProvider();
     }

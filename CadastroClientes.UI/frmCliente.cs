@@ -1,5 +1,6 @@
 ﻿using CadastroClientes.Application.Services;
 using CadastroClientes.Domain.Entities;
+using Guna.UI2.WinForms.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,54 @@ namespace CadastroClientes.UI
             InitializeComponent();
         }
 
-        private async void btnCadastrar_Click(object sender, EventArgs e)
+        public void CarregarCliente(int id)
+        {
+            _clienteIdParaEditar = id;
+        }
+
+        private void PreencherCampos()
+        {
+            if (_clienteAtual == null) return;
+
+            txtNome.Text = _clienteAtual.Nome;
+            txtEmail.Text = _clienteAtual.Email;
+            txtTelefone.Text = _clienteAtual.Telefone;
+            chkAtivo.Checked = _clienteAtual.Ativo;
+        }
+
+
+
+
+
+
+        private async void frmCliente_Load(object sender, EventArgs e)
+        {
+            if (_clienteIdParaEditar.HasValue)
+            {
+                _clienteAtual = await _clienteService.BuscarPorIdAsync(_clienteIdParaEditar.Value);
+
+                if (_clienteAtual != null)
+                {
+                    _modoEdicao = true;
+                    this.Text = "Editar Cliente";
+                    PreencherCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Cliente não encontrado", "Erro",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+            }
+            else
+            {
+                _clienteAtual = new Cliente();
+                _modoEdicao = false;
+                this.Text = "Novo Cliente";
+            }
+        }
+
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
@@ -49,8 +97,7 @@ namespace CadastroClientes.UI
             try
             {
                 if (_clienteAtual == null)
-                {
-                    _clienteAtual = new Cliente();
+                _clienteAtual = new Cliente();
 
                     _clienteAtual.Nome = txtNome.Text;
                     _clienteAtual.Email = txtEmail.Text;
@@ -89,7 +136,7 @@ namespace CadastroClientes.UI
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     }
-                }
+                
             }
             catch (Exception ex)
             {
@@ -98,7 +145,16 @@ namespace CadastroClientes.UI
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
             }
+        }
 
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();   
         }
     }
 }

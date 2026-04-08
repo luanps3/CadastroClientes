@@ -184,6 +184,7 @@
             btnEditar.Size = new Size(107, 40);
             btnEditar.TabIndex = 3;
             btnEditar.Text = "Editar";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -202,6 +203,7 @@
             btnExcluir.Size = new Size(107, 40);
             btnExcluir.TabIndex = 3;
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnAtualizar
             // 
@@ -220,6 +222,7 @@
             btnAtualizar.Size = new Size(107, 40);
             btnAtualizar.TabIndex = 3;
             btnAtualizar.Text = "Atualizar";
+            btnAtualizar.Click += btnAtualizar_Click;
             // 
             // guna2BorderlessForm1
             // 

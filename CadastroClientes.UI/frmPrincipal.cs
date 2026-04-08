@@ -1,5 +1,7 @@
 ﻿using CadastroClientes.Application.Services;
+using CadastroClientes.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,7 +82,83 @@ namespace CadastroClientes.UI
         private void btnNovo_Click(object sender, EventArgs e)
         {
             var frmCadastro = Program.ServiceProvider!.GetRequiredService<frmCliente>();
-            frmCadastro.ShowDialog();  
+            frmCadastro.ShowDialog();
+        }
+
+        private async void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            await CarregarClientes();
+        }
+
+        private async void btnEditar_Click(object sender, EventArgs e)
+        {
+            var clienteSelecionado = ObterClienteSelecionado();
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Selecione um cliente para editar",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            var FrmCliente = Program.ServiceProvider!.GetRequiredService<frmCliente>();
+            FrmCliente.CarregarCliente(clienteSelecionado.Id);
+            FrmCliente.ShowDialog();
+
+            await CarregarClientes();
+
+        }
+
+
+
+        private Cliente? ObterClienteSelecionado()
+        {
+            if (dgvClientes.SelectedRows.Count == 0)
+                return null;
+
+            return dgvClientes.SelectedRows[0].DataBoundItem as Cliente;
+
+        }
+
+        private async void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var clienteSelecinado = ObterClienteSelecionado();
+            if (clienteSelecinado == null)
+            {
+                MessageBox.Show("Selecione um cliente!",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            var resultado = MessageBox.Show($"deseja realemnte excluir o cliente '{clienteSelecinado.Nome}'?",
+                "Confirmação",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                var (sucesso, mensagem) = await _clienteService.ExcluirClienteAsync(clienteSelecinado.Id);
+
+                if (sucesso)
+                {
+                    MessageBox.Show("Cliente excluído com sucesso!",
+                        "Sucesso", MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information);
+                    await CarregarClientes();
+                }
+                else
+                {
+                    MessageBox.Show(mensagem, 
+                        "Erro", 
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+            }
+
         }
     }
 }
